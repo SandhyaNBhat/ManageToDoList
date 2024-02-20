@@ -1,5 +1,6 @@
 package com.spcreations.managetodolist
 
+import android.util.Log
 import androidx.annotation.IntRange
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -29,4 +30,8 @@ fun convertLongToDateTime(time: Long):String{
     val date = Date(time)
     val sdf = SimpleDateFormat("dd/MM/yyyy HH:mm")
     return sdf.format(date)
+}
+
+fun convertDateToLong(dateTime: Date){
+    Log.d("TAG","Coverting Date to Long")
 }
