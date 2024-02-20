@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">ManageToDoList</string>
+    <string name="addtask">AddTask</string>
+    <string name="add_tasks">Add Tasks</string>
+    <string name="archive_tasks">Archive To Do List</string>
+    <string name="task_name">Task Name</string>
+    <string name="task_category">Task Category</string>
+    <string name="task_due_date">Task Due Date</string>
+    <string name="add_new_category">Add New Category</string>
+    <string name="category_name">Category Name</string>
+    <string name="add_btn">Add</string>
+    <string name="cancel_btn">Cancel</string>
+    <string name="archived_to_do_list">Show Archive List</string>
+
+    <string-array name="category_names">
+        <item>Task Category</item>
+        <item>Personal</item>
+        <item>Professional</item>
+    </string-array>
+</resources>

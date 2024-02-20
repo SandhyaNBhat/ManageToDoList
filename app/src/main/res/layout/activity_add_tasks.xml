@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddTasksActivity">
+
+    <LinearLayout
+        android:id="@+id/layout_req_fields"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:orientation="vertical">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/task_name"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:hint="@string/task_name">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <Spinner
+                android:id="@+id/categories_spinner"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_margin="8dp"
+                android:layout_weight="5" />
+
+
+            <ImageView
+                android:id="@+id/btn_add_category"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:src="@drawable/ic_add_category" />
+
+        </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/task_duedate"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:hint="@string/task_due_date"
+            app:expandedHintEnabled="false"
+            app:placeholderText="DD/MM/YYYY h MM a">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/duedate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+    </LinearLayout>
+
+   <Button
+       android:id="@+id/btn_add_task"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_margin="8dp"
+       android:text="@string/add_btn"
+       android:layout_below="@+id/layout_req_fields"
+       android:layout_toLeftOf="@id/btn_cancel_task"/>
+
+    <Button
+        android:id="@+id/btn_cancel_task"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="@string/cancel_btn"
+        android:layout_below="@+id/layout_req_fields"
+        android:layout_alignParentEnd="true"/>
+
+</RelativeLayout>
