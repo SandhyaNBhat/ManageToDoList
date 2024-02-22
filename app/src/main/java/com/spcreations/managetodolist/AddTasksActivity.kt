@@ -18,6 +18,7 @@ import android.widget.CursorAdapter
 import android.widget.TextView
 import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.content.ContextCompat.startActivity
+import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -64,6 +65,9 @@ class AddTasksActivity : AppCompatActivity() {
         binding = ActivityAddTasksBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.btnSaveTask.isEnabled = false
+        binding.btnSaveTask.isVisible = false
+
 
         //calling action bar
         var actionBar = supportActionBar
@@ -88,6 +92,7 @@ class AddTasksActivity : AppCompatActivity() {
 
         val editDueDate = i.getLongExtra("task_due_date",0)
         Log.d("TAG","editDueDate val "+editDueDate)
+        val editTaskId = i.getLongExtra("task_Id",0)
 
         //Check if the activity is opened in insert mode or edit mode
 
@@ -98,6 +103,11 @@ class AddTasksActivity : AppCompatActivity() {
             getCategoryValues()
             binding.categoriesSpinner.setSelection(editCatId!!,true)
             binding.duedate.setText(editDueDate.let { convertLongToDateTime(it) })
+            binding.btnSaveTask.isVisible = true
+            binding.btnSaveTask.isEnabled = true
+
+            binding.btnAddTask.isEnabled = false
+            binding.btnAddTask.isVisible = false
         }
 
 
@@ -173,7 +183,7 @@ class AddTasksActivity : AppCompatActivity() {
         binding.btnAddTask.setOnClickListener {
             val taskName = binding.name.editableText.toString()
             val taskCategory =binding.categoriesSpinner.selectedItemId
-            val taskDueDate = dateTimeInLong
+            val taskDueDate =dateTimeInLong
 
             Log.d("Tag","Task name "+taskName)
             Log.d("Tag","Selected Task Category"+taskCategory)
@@ -186,6 +196,25 @@ class AddTasksActivity : AppCompatActivity() {
             moveBackToParentActivity()
 
         }
+
+        //Update tasks to the database table
+       binding.btnSaveTask.setOnClickListener {
+           val taskName = binding.name.editableText.toString()
+           val taskCategory =binding.categoriesSpinner.selectedItemId
+           val taskDueDate = if(dateTimeInLong.equals(0)) editDueDate else dateTimeInLong
+
+           Log.d("Tag","Task name  "+taskName)
+           Log.d("Tag","Selected Task Category"+taskCategory)
+           Log.d("Tag","Selected taskDueDate"+taskDueDate)
+
+           val updatedTaskItem = Todo(editTaskId,taskName,false,taskDueDate,taskCategory+1)
+           viewModel.update(updatedTaskItem)
+
+           callAlarmManager(taskName,taskDueDate)
+
+           moveBackToParentActivity()
+       }
+
 
         //Navigate back to previous screen on cancel button click
         binding.btnCancelTask.setOnClickListener {

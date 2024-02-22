@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity() {
 
         todoAdapter.onClickListener = {
             val intent = Intent(this, AddTasksActivity::class.java)
+            intent.putExtra("task_Id",it.taskId)
             intent.putExtra("task_name",it.taskName)
             intent.putExtra("task_category",it.categoryId)
             Log.d("TAG","Category value sent to intent "+it.categoryId)

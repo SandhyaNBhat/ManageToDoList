@@ -32,6 +32,3 @@ fun convertLongToDateTime(time: Long):String{
     return sdf.format(date)
 }
 
-fun convertDateToLong(dateTime: Date){
-    Log.d("TAG","Coverting Date to Long")
-}

@@ -71,6 +71,14 @@
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/btn_save_task"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:text="@string/save_btn"
+        android:layout_below="@+id/layout_req_fields"/>
+
    <Button
        android:id="@+id/btn_add_task"
        android:layout_width="wrap_content"

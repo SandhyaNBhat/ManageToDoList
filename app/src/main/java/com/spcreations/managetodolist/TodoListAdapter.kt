@@ -27,6 +27,7 @@ class TodoListAdapter(private var todoList: List<TodoListItem>):
 
        fun bind(item:TodoListItem){
 
+           binding.taskId.text = item.taskId.toString()
             binding.taskName.text = item.taskName
             binding.category.text = item.category
             binding.duedate.text= item.dueDate?.let { convertLongToDateTime(it) }

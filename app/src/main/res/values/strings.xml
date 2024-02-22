@@ -11,6 +11,7 @@
     <string name="add_btn">Add</string>
     <string name="cancel_btn">Cancel</string>
     <string name="archived_to_do_list">Show Archive List</string>
+    <string name="save_btn">Save</string>
 
     <string-array name="category_names">
         <item>Task Category</item>

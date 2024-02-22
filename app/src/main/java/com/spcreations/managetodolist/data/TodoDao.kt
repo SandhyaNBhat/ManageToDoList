@@ -16,13 +16,14 @@ interface TodoDao {
     @Query("SELECT Id from todo_items where task =:taskName")
     fun getTaskId(taskName:String): LiveData<Long>
 
-    @Query("SELECT todo_items.task AS taskName,todo_items.dueDate ,task_categories.categoryName as category, todo_items.categoryId as categoryId " +
+   @Query("SELECT todo_items.id AS taskId, todo_items.task AS taskName,todo_items.dueDate ,task_categories.categoryName as category, todo_items.categoryId as categoryId " +
             "FROM todo_items,task_categories  " +
             "WHERE todo_items.categoryId=task_categories.categoryId " +
             "AND todo_items.isCompleted=false")
     fun getToDoList(): LiveData<List<TodoListItem>>
 
-    @Query("SELECT todo_items.task AS taskName,todo_items.dueDate ,task_categories.categoryName as category, todo_items.categoryId as categoryId " +
+
+    @Query("SELECT todo_items.id AS taskId,todo_items.task AS taskName,todo_items.dueDate ,task_categories.categoryName as category, todo_items.categoryId as categoryId " +
             "FROM todo_items,task_categories  " +
             "WHERE todo_items.categoryId=task_categories.categoryId " +
             "AND todo_items.isCompleted=true")
@@ -30,6 +31,8 @@ interface TodoDao {
 
     @Query("SELECT categoryId FROM task_categories WHERE categoryName = :categoryName")
      suspend fun getCatSpinnerId(categoryName: String):Long
+
+
 
 
 
