@@ -1,7 +1,11 @@
 package com.spcreations.managetodolist
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -29,6 +33,33 @@ class ArchiveListActivity : AppCompatActivity() {
             todoAdapter.setItems(todoList)
 
         })
+
+
+
+
+
+
+
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater : MenuInflater = menuInflater
+        inflater.inflate(R.menu.tasks_menu,menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.delete_task ->{
+                todoViewModel.deleteAllTasks()
+                return true
+
+            }
+            else ->{
+                super.onOptionsItemSelected(item)
+            }
+
+        }
 
     }
 }

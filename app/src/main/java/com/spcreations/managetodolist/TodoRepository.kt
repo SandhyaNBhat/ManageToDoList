@@ -11,6 +11,7 @@ class TodoRepository(private val todoDao: TodoDao) {
     val allTodos: LiveData<List<Todo>> = todoDao.getAllTodos()
 
     val todoList : LiveData<List<TodoListItem>> = todoDao.getToDoList()
+    val todoListOverdue : LiveData<List<TodoListItem>> = todoDao.getToDoListOverdue()
     val categories: LiveData<List<String>> = todoDao.getCategories()
     val archivedTodoList :LiveData<List<TodoListItem>> = todoDao.getArchivedToDoList()
 
@@ -54,4 +55,8 @@ class TodoRepository(private val todoDao: TodoDao) {
     suspend fun updateCompletedTask(taskName:String){
         todoDao.updateCompletedTask(taskName)
     }
+
+    suspend fun archiveAllTasks() = todoDao.archiveAllTasks()
+
+    suspend fun deleteAllTasks() = todoDao.deleteAllTasks()
 }

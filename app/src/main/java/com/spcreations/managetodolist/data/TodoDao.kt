@@ -19,8 +19,16 @@ interface TodoDao {
    @Query("SELECT todo_items.id AS taskId, todo_items.task AS taskName,todo_items.dueDate ,task_categories.categoryName as category, todo_items.categoryId as categoryId " +
             "FROM todo_items,task_categories  " +
             "WHERE todo_items.categoryId=task_categories.categoryId " +
-            "AND todo_items.isCompleted=false")
+            "AND todo_items.isCompleted=false" +
+           " AND datetime(todo_items.dueDate/1000, 'unixepoch','localtime') > datetime('now','localtime')")
     fun getToDoList(): LiveData<List<TodoListItem>>
+
+    @Query("SELECT todo_items.id AS taskId, todo_items.task AS taskName,todo_items.dueDate ,task_categories.categoryName as category, todo_items.categoryId as categoryId " +
+            "FROM todo_items,task_categories  " +
+            "WHERE todo_items.categoryId=task_categories.categoryId " +
+            "AND todo_items.isCompleted=false" +
+            " AND datetime(todo_items.dueDate/1000, 'unixepoch','localtime') < datetime('now','localtime')")
+    fun getToDoListOverdue(): LiveData<List<TodoListItem>>
 
 
     @Query("SELECT todo_items.id AS taskId,todo_items.task AS taskName,todo_items.dueDate ,task_categories.categoryName as category, todo_items.categoryId as categoryId " +
@@ -47,6 +55,12 @@ interface TodoDao {
 
     @Query("UPDATE todo_items SET isCompleted=true WHERE task=:taskName")
     suspend fun updateCompletedTask(taskName:String)
+
+    @Query("UPDATE todo_items SET isCompleted=true")
+    suspend fun archiveAllTasks()
+
+ @Query("DELETE FROM todo_items WHERE isCompleted=false")
+ suspend fun deleteAllTasks()
 
 
     @Query("SELECT * FROM task_categories")

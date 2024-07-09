@@ -5,5 +5,13 @@
         android:title="@string/archived_to_do_list"
         app:showAsAction="collapseActionView"/>
 
+    <item android:id="@+id/delete_todos"
+           android:title="@string/delete_all_todos"
+           app:showAsAction="collapseActionView"/>
+
+    <item android:id="@+id/archive_all"
+        android:title="@string/archive_all_todos"
+        app:showAsAction="collapseActionView"/>
+
 
 </menu>

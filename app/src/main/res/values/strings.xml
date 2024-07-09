@@ -12,6 +12,10 @@
     <string name="cancel_btn">Cancel</string>
     <string name="archived_to_do_list">Show Archive List</string>
     <string name="save_btn">Save</string>
+    <string name="delete_all_todos">Delete All ToDos</string>
+    <string name="archive_all_todos">Archive All ToDos</string>
+    <string name="delete_task">Delete Task</string>
+    <string name="empty_view_title_text">No Items in ToDoList!! Add your tasks.\n</string>
 
     <string-array name="category_names">
         <item>Task Category</item>
