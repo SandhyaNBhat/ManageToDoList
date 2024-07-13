@@ -3,7 +3,7 @@
     <style name="Base.Theme.ManageToDoList" parent="Theme.Material3.DayNight">
         <!-- Customize your light theme here. -->
         <item name="colorPrimary">@color/md_theme_light_primary</item>
-        <item name="colorOnPrimary">@color/md_theme_light_onPrimary</item>
+        <item name="colorOnPrimary">@color/md_theme_dark_onPrimaryContainer</item>
         <item name="colorPrimaryContainer">@color/md_theme_light_primaryContainer</item>
         <item name="colorOnPrimaryContainer">@color/md_theme_light_onPrimaryContainer</item>
         <item name="colorError">@color/md_theme_light_error</item>
