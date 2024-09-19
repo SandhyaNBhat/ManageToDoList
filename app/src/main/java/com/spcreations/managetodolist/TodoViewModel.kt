@@ -58,11 +58,23 @@ class TodoViewModel(application: Application) : AndroidViewModel(application) {
         repository.updateCompletedTask(taskName)
     }
 
+    fun markForDelete(taskName: String) = viewModelScope.launch{
+        repository.markForDelete(taskName)
+    }
+
+    fun unMarkForDelete(taskName: String) = viewModelScope.launch{
+        repository.unMarkForDelete(taskName)
+    }
+
     fun archiveAllTasks() = viewModelScope.launch {
         repository.archiveAllTasks()
     }
 
     fun deleteAllTasks() = viewModelScope.launch {
         repository.deleteAllTasks()
+    }
+
+    fun deleteAllMarkedTasks() = viewModelScope.launch {
+        repository.deleteAllMarkedTasks()
     }
 }

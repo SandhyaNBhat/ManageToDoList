@@ -34,6 +34,16 @@ class ArchiveListActivity : AppCompatActivity() {
 
         })
 
+        todoAdapter.onCheckBoxClick = {
+            todoViewModel.markForDelete(it)
+        }
+
+        todoAdapter.onCheckBoxUnClick = {
+            todoViewModel.unMarkForDelete(it)
+        }
+
+
+
 
 
 
@@ -51,7 +61,8 @@ class ArchiveListActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.delete_task ->{
-                todoViewModel.deleteAllTasks()
+
+                todoViewModel.deleteAllMarkedTasks()
                 return true
 
             }

@@ -56,7 +56,16 @@ class TodoRepository(private val todoDao: TodoDao) {
         todoDao.updateCompletedTask(taskName)
     }
 
+    suspend fun markForDelete(taskName:String){
+        todoDao.markForDelete(taskName)
+    }
+    suspend fun unMarkForDelete(taskName:String){
+        todoDao.unMarkForDelete(taskName)
+    }
+
     suspend fun archiveAllTasks() = todoDao.archiveAllTasks()
 
     suspend fun deleteAllTasks() = todoDao.deleteAllTasks()
+
+    suspend fun deleteAllMarkedTasks() = todoDao.deleteAllMarkedTasks()
 }

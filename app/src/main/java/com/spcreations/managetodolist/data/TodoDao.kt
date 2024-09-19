@@ -56,11 +56,20 @@ interface TodoDao {
     @Query("UPDATE todo_items SET isCompleted=true WHERE task=:taskName")
     suspend fun updateCompletedTask(taskName:String)
 
+    @Query("UPDATE todo_items SET toDelete=true WHERE task=:taskName AND isCompleted=true" )
+    suspend fun markForDelete(taskName:String)
+
+    @Query("UPDATE todo_items SET toDelete=false WHERE task=:taskName AND isCompleted=true AND toDelete=true" )
+    suspend fun unMarkForDelete(taskName:String)
+
     @Query("UPDATE todo_items SET isCompleted=true")
     suspend fun archiveAllTasks()
 
  @Query("DELETE FROM todo_items WHERE isCompleted=false")
  suspend fun deleteAllTasks()
+
+    @Query("DELETE FROM todo_items WHERE isCompleted=true and toDelete=true")
+    suspend fun deleteAllMarkedTasks()
 
 
     @Query("SELECT * FROM task_categories")

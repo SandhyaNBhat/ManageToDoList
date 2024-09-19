@@ -9,6 +9,7 @@ data class Todo(
     val id: Long = 0,
     val task: String,
     val isCompleted: Boolean = false,
+    val toDelete: Boolean = false,
     val dueDate: Long? = null,
     val categoryId: Long? = null
 )

@@ -188,7 +188,7 @@ class AddTasksActivity : AppCompatActivity() {
             Log.d("Tag", "Task name " + taskName)
             Log.d("Tag", "Selected Task Category" + taskCategory)
 
-            val todoTaskItem = Todo(0, taskName, false, taskDueDate, taskCategory + 1)
+            val todoTaskItem = Todo(0, taskName, false, false, taskDueDate, taskCategory + 1)
             viewModel.insert(todoTaskItem)
 
             callAlarmManager(taskName, taskDueDate)
@@ -207,7 +207,7 @@ class AddTasksActivity : AppCompatActivity() {
             Log.d("Tag", "Selected Task Category" + taskCategory)
             Log.d("Tag", "Selected taskDueDate" + taskDueDate)
 
-            val updatedTaskItem = Todo(editTaskId, taskName, false, taskDueDate, taskCategory + 1)
+            val updatedTaskItem = Todo(editTaskId, taskName, false, false,taskDueDate, taskCategory + 1)
             viewModel.update(updatedTaskItem)
 
             callAlarmManager(taskName, taskDueDate)

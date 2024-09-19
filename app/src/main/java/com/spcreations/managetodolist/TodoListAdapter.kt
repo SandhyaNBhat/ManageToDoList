@@ -19,6 +19,7 @@ class TodoListAdapter(private var todoList: List<TodoListItem>):
 
     var onCheckBoxClick : ((String) -> Unit)? = null
     var onClickListener : ((TodoListItem) ->Unit)? = null
+    var onCheckBoxUnClick : ((String) -> Unit)? = null
 
       inner class ViewHolder(val binding:TodolistItemsBinding,clickAtPosition:(Int)->Unit):RecyclerView.ViewHolder(binding.root){
 
@@ -46,6 +47,10 @@ class TodoListAdapter(private var todoList: List<TodoListItem>):
 
             binding.checkbox.setOnClickListener {
                 onCheckBoxClick?.invoke(item.taskName)
+            }
+
+            if(binding.checkbox.isChecked == false){
+                onCheckBoxUnClick?.invoke(item.taskName)
             }
 
         }
